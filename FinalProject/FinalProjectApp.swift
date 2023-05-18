@@ -1,17 +1,30 @@
 //
-//  FinalProjectApp.swift
-//  FinalProject
+//  snakeApp.swift
+//  CreatTask
 //
-//  Created by Leavitt, Ethan on 10/7/22.
+//  Created by Leavitt, Ethan on 12/1/22.
 //
-
 import SwiftUI
 
 @main
-struct FinalProjectApp: App {
+struct finalProjectApp: App{
+    @StateObject var appState = AppState.shared
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            
+            contentView().id(appState.gameID)
         }
     }
+}
+
+
+
+
+
+//create a global app state
+class AppState: ObservableObject{
+    static let shared = AppState()
+    
+    @Published var gameID = UUID()
 }
